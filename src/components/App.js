@@ -1,17 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import { fetchPosts } from '../action/posts';
 
-class App extends Component {
-  //to fetch posts form the api
-  //we use componentdidMount
+import { fetchPosts } from '../action/posts';
+import { PostsList } from './';
+
+class App extends React.Component {
   componentDidMount() {
     this.props.dispatch(fetchPosts());
   }
 
   render() {
-    console.log('this.props  ', this.props);
-    return <div>App</div>;
+    const { posts } = this.props;
+    return (
+      <div>
+        <PostsList posts={posts} />
+      </div>
+    );
   }
 }
 
@@ -20,5 +24,4 @@ function mapStateToProps(state) {
     posts: state.posts,
   };
 }
-
 export default connect(mapStateToProps)(App);

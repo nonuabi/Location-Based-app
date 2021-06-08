@@ -1,9 +1,9 @@
 import { UPDATE_POSTS } from '../action/actionType';
-export default function post(state = [], action) {
-  //  { posts:[]}
+
+export default function posts(state = [], action) {
   switch (action.type) {
     case UPDATE_POSTS:
-      return action.post;
+      return action.posts;
     default:
       return state;
   }
